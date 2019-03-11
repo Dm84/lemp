@@ -1,0 +1,47 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./data/www:/var/www
+      - ./conf/nginx:/etc/nginx/conf.d
+      - ./log/nginx:/var/log/nginx/
+    ports:
+      - "80:80"
+    network_mode: "host"
+  php:
+    container_name: php-fpm
+    image: phpfpm:latest
+    #build:
+      #context: ./build
+      #dockerfile: ./build/Dockerfile
+    volumes:
+      - ./data/www:/var/www
+      - ./conf/php:/usr/local/etc/php
+      - ./conf/fpm:/usr/local/etc/php-fpm.d
+      - ./log/fpm:/usr/local/var/log
+    network_mode: "host"
+
+  db:
+    container_name: db    
+    image: percona
+    restart: always    
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - mysql-data:/var/lib/mysql      
+      - ./conf/sql:/etc/mysql/conf.d
+    network_mode: "host"
+      
+volumes:
+  mysql-data:      
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: '/home/dorlov/projects/php/docker/php-fpm/data/sql'
+
+
+  
