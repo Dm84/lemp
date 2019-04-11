@@ -41,7 +41,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: '/home/dorlov/projects/php/docker/php-fpm/data/sql'
+      device: /home/dorlov/projects/php/lemp/data/sql
 
 
   
