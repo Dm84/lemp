@@ -7,8 +7,6 @@ services:
       - ./data/www:/var/www
       - ./conf/nginx:/etc/nginx/conf.d
       - ./log/nginx:/var/log/nginx/
-    ports:
-      - "80:80"
     network_mode: "host"
   php:
     container_name: php-fpm
