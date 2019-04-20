@@ -11,7 +11,7 @@ services:
   php:
     container_name: php-fpm
     image: phpfpm:latest
-    build: ./build/Dockerfile    
+    build: ./build
     volumes:
       - ./data/www:/var/www
       - ./conf/php:/usr/local/etc/php
@@ -37,7 +37,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/dorlov/projects/php/lemp/data/sql
+      device: /home/dorlov/projects/php/docker/lemp/data/sql
 
 
   
