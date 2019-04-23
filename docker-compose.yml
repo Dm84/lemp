@@ -38,6 +38,3 @@ volumes:
       type: none
       o: bind
       device: /home/dorlov/projects/php/lemp/data/sql
-
-
-  
