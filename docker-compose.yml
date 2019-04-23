@@ -11,7 +11,7 @@ services:
   php:
     container_name: php-fpm
     image: phpfpm:latest
-    build: ./build/Dockerfile    
+    build: ./build
     volumes:
       - ./data/www:/var/www
       - ./conf/php:/usr/local/etc/php
