@@ -20,21 +20,21 @@ services:
     network_mode: "host"
 
   db:
-    container_name: db    
+    container_name: db
     image: percona
-    restart: always    
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ''
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - mysql-data:/var/lib/mysql      
+      - mysql-data:/var/lib/mysql
       - ./conf/sql:/etc/mysql/conf.d
     network_mode: "host"
-      
+
 volumes:
-  mysql-data:      
+  mysql-data:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/dorlov/projects/php/lemp/data/sql
+      device: /home/dorlov/projects/docker/php/data/sql
