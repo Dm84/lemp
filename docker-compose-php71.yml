@@ -10,15 +10,14 @@ services:
     network_mode: "host"
   php:
     container_name: php-fpm
-    image: phpfpm:homebrew
-    build: ./build/php73
+    image: phpfpm71:homebrew
+    build: ./build/php71
     volumes:
       - ./data/www:/var/www
-      - ./conf/php:/usr/local/etc/php
+      - ./conf/php71:/usr/local/etc/php
       - ./conf/fpm:/usr/local/etc/php-fpm.d
       - ./log/php:/usr/local/var/log
     network_mode: "host"
-
   db:
     container_name: db
     image: percona
@@ -37,4 +36,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: $PATH_TO_DATA/data/sql
+      device: ${PATH_TO_DATA}/data/sql
