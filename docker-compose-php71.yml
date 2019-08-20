@@ -5,6 +5,7 @@ services:
     image: nginx:latest
     volumes:
       - ./data/www:/var/www
+      - ${PATH_TO_EXTRA_WWW}:/var/www/extra
       - ./conf/nginx:/etc/nginx/conf.d
       - ./log/nginx:/var/log/nginx/
     network_mode: "host"
@@ -14,6 +15,7 @@ services:
     build: ./build/php71
     volumes:
       - ./data/www:/var/www
+      - ${PATH_TO_EXTRA_WWW}:/var/www/extra
       - ./conf/php71:/usr/local/etc/php
       - ./conf/fpm:/usr/local/etc/php-fpm.d
       - ./log/php:/usr/local/var/log
