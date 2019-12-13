@@ -28,7 +28,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./conf/sql:/etc/mysql/conf.d
+      - ./conf/sql:/etc/my.cnf.d
     network_mode: "host"
 
 volumes:
