@@ -11,3 +11,6 @@ RUN docker-php-ext-install gd zip curl
 RUN docker-php-ext-install mbstring mysqli soap opcache
 RUN pecl install xdebug
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN apt-get install -y libxslt-dev
+RUN docker-php-ext-install pdo_mysql bcmath intl xsl
+
