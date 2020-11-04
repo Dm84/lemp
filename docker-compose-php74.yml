@@ -5,21 +5,20 @@ services:
     image: nginx:latest
     volumes:
       - ./data/www:/var/www
-      - ${PATH_TO_EXTRA_WWW}:/var/www/extra
       - ./conf/nginx:/etc/nginx/conf.d
       - ./log/nginx:/var/log/nginx/
     network_mode: "host"
   php:
     container_name: php-fpm
-    image: phpfpm56:homebrew
-    build: ./build/php56
+    image: phpfpm:homebrew
+    build: ./build/php74
     volumes:
       - ./data/www:/var/www
-      - ${PATH_TO_EXTRA_WWW}:/var/www/extra
-      - ./conf/php56:/usr/local/etc/php
+      - ./conf/php74:/usr/local/etc/php
       - ./conf/fpm:/usr/local/etc/php-fpm.d
       - ./log/php:/usr/local/var/log
     network_mode: "host"
+
   db:
     container_name: db
     image: percona
@@ -30,7 +29,6 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./conf/sql:/etc/my.cnf.d
-      - ./log/sql:/var/log/mysql/mysql.log
     network_mode: "host"
 
 volumes:
@@ -39,4 +37,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ${PATH_TO_DATA}/data/sql
+      device: $PATH_TO_DATA/data/sql
