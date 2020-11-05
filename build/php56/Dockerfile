@@ -5,3 +5,4 @@ RUN docker-php-ext-install gd zip curl mbstring
 RUN docker-php-ext-install mysqli mysql soap opcache
 RUN docker-php-ext-install pdo pdo_mysql
 RUN pecl install xdebug-2.5.5
+RUN apt-get update && apt-get install -y git

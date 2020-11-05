@@ -14,3 +14,4 @@ RUN docker-php-ext-install pdo_mysql bcmath intl xsl
 RUN docker-php-ext-install sockets
 RUN pecl install xdebug
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
+RUN apt-get update && apt-get install -y git
